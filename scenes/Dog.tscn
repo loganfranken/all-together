@@ -6,14 +6,48 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a433f"]
 size = Vector2(70, 60)
 
-[node name="Dog" type="Area2D" unique_id=1493402567]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7w5p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ycva"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_05qom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4y65u"]
+
+[node name="Dog" type="Node2D" unique_id=593398326]
 script = ExtResource("1_p7w5p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=847216645]
+[node name="Self" type="Area2D" parent="." unique_id=192789778 groups=["dog_body"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Self" unique_id=847216645]
 shape = SubResource("RectangleShape2D_a433f")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=194599670]
+[node name="Sprite2D" type="Sprite2D" parent="Self/CollisionShape2D" unique_id=194599670]
 texture = ExtResource("2_5ycva")
 
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[node name="Up" type="Area2D" parent="." unique_id=546870926]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Up" unique_id=115557943]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_p7w5p")
+
+[node name="Left" type="Area2D" parent="." unique_id=504279914]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=1198857482]
+position = Vector2(-56, 0)
+shape = SubResource("RectangleShape2D_5ycva")
+
+[node name="Down" type="Area2D" parent="." unique_id=1534630350]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Down" unique_id=1134941602]
+position = Vector2(0, 48)
+shape = SubResource("RectangleShape2D_05qom")
+
+[node name="Right" type="Area2D" parent="." unique_id=1098210382]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=2138352338]
+position = Vector2(56, 0)
+shape = SubResource("RectangleShape2D_4y65u")
+
+[connection signal="mouse_entered" from="Self" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Self" to="." method="_on_mouse_exited"]

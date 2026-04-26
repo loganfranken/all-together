@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 var _is_dragging = false
 var _is_mouse_over = false
@@ -33,9 +33,24 @@ func _start_dragging():
 func _stop_dragging():
 	_is_dragging = false
 	
-	print(get_overlapping_areas())
-	if has_overlapping_areas():
+	if not _is_in_valid_drop_position():
 		position = _original_position
 	
 	_original_position = null
 	modulate = Color.WHITE
+	
+func _is_in_valid_drop_position():
+	if(len($Self.get_overlapping_areas().filter(func(b): return b.is_in_group("dog_body"))) > 0):
+		return false
+		
+	if(len($Up.get_overlapping_areas().filter(func(b): return b.is_in_group("dog_body"))) > 0):
+		return true
+	
+	if(len($Left.get_overlapping_areas().filter(func(b): return b.is_in_group("dog_body"))) > 0):
+		return true
+		
+	if(len($Right.get_overlapping_areas().filter(func(b): return b.is_in_group("dog_body"))) > 0):
+		return true
+		
+	if(len($Down.get_overlapping_areas().filter(func(b): return b.is_in_group("dog_body"))) > 0):
+		return true
