@@ -469,9 +469,6 @@ tile_set = SubResource("TileSet_pqo76")
 
 [node name="Dogs" type="Node2D" parent="." unique_id=1722994298]
 
-[node name="Dog" parent="Dogs" unique_id=1380126641 instance=ExtResource("2_84v8o")]
-position = Vector2(520, 360)
-
 [node name="Dog11" parent="Dogs" unique_id=1310763231 instance=ExtResource("2_84v8o")]
 position = Vector2(520, 360)
 
